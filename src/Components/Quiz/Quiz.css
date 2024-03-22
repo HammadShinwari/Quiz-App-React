@@ -1,5 +1,5 @@
 .container{
-    width: 580px;
+    width: 480px;
     margin: auto;
     background: white;
     color: #262626;
@@ -8,36 +8,32 @@
     gap: 20px;
     border-radius: 10px;
     padding: 40px 50px;
-}
-
-.container hr{
-    height: 2px;
-    border: none;
-    background: #707070;
+    box-shadow: 2px 1px 10px 10px #b6c5f0;
 }
 
 .container h2{
-    font-size: 24px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .container ul li{
     display: flex;
     align-items: center;
-    height: 40px;
+    height: 48px;
     border-left: 15px;
-    border: 1px solid #686868;
+    border: 2px solid #686868;
     border-radius: 8px;
     margin-bottom: 13px;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
     padding-left: 10px;
 }
 
 .container button{
     margin: auto;
-    width: 170px;
-    height: 50px;
+    width: 135px;
+    height: 48px;
     background: #553f9a;
     color: #fff;
     font-size: 20px;
@@ -51,6 +47,7 @@
 .container .index{
     margin: auto;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .container .correct{
@@ -61,4 +58,8 @@
 .container .wrong{
     background: #FFEBEB;
     border-color: #FF4A4A;
+}
+
+.result-h2, .result-h3{
+    text-align: center;
 }

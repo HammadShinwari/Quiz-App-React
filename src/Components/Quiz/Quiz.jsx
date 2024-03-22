@@ -8,6 +8,7 @@ function Quiz() {
     let [question, setQuestion] = useState(data[index]);
     let [lock, setLock] = useState(false);
     let [score, setScore] = useState(0);
+    let [result, setResult] = useState(false);
 
     let Option1 = useRef(null);
     let Option2 = useRef(null);
@@ -16,6 +17,7 @@ function Quiz() {
 
     let option_array = [Option1, Option2, Option3, Option4];
 
+    // check answer function
     let checkAns = (e, ans) => {
 
       if(lock === false){
@@ -36,24 +38,60 @@ function Quiz() {
       
     }
 
+    // next button function
     let next = () => {
+
+      if(lock === true){
+        if (index === data.length - 1) {
+          setResult(true);
+          return 0;
+        }
+        setIndex(++index);
+        setQuestion(data[index]);
+        setLock(false);
+        option_array.map((option) => {
+          option.current.classList.remove("wrong");
+          option.current.classList.remove("correct");
+          return null;
+        })
+      }
 
     }
 
+    // reset button function
+    let reset = () => {
+      setIndex(0);
+      setQuestion(data[0]);
+      setScore(0);
+      setLock(false);
+      setResult(false);
+    }
+
   return (
+
     <div className="container">
-        <h1>Quiz App</h1>
-        <hr />
-        <h2>{index+1}. {question.question}</h2>
-        <ul>
+        {
+        result ? <></> : <>
+          <h2>{index+1}. {question.question}</h2>
+          <ul>
             <li ref={Option1} onClick={(e) => {checkAns(e,1)}}>{question.option1}</li>
             <li ref={Option2} onClick={(e) => {checkAns(e,2)}}>{question.option2}</li>
             <li ref={Option3} onClick={(e) => {checkAns(e,3)}}>{question.option3}</li>
             <li ref={Option4} onClick={(e) => {checkAns(e,4)}}>{question.option4}</li>
-        </ul>
-        <button>Next</button>
-        <div className="index">1 of 5 question</div>
+          </ul>
+          <button onClick={next}>Next</button>
+          <div className="index">{index+1} of {data.length} questions</div>
+        </>
+        }
+        {
+          result ? <>
+            <h2 className='result-h2'>Your Score {score}/{data.length} correct answer.</h2>
+            <h3 className='result-h3'>Congratulations on completing the quiz 🎉</h3>
+            <button onClick={reset}>Reset</button>
+          </> : <></>
+        }
     </div>
+
   )
 }
 
