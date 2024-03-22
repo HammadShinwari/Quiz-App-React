@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css'
+import './App.css';
 import Quiz from './Components/Quiz/Quiz';
 
 function App() {
@@ -10,4 +10,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
